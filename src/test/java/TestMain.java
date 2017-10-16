@@ -15,9 +15,12 @@ import org.junit.Test;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
 import persistence.elastic.utils.ElasticIndices;
+import utils.Duration;
 
 import java.net.UnknownHostException;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TestMain {
 
@@ -60,6 +63,19 @@ public class TestMain {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testDuration() throws InterruptedException {
+        Date date1 = new Date();
+
+        Thread.sleep(1000);
+
+        Date date2 = new Date();
+
+        Duration duration = new Duration(date1, date2);
+        System.out.println(String.format("%f", (float) duration.getDuration()));
+        System.out.println(String.format("%f", (float) duration.getDuration(TimeUnit.SECONDS)));
     }
 
 }
