@@ -2,7 +2,8 @@ package persistence.mongo.util;
 
 public enum CollectionNames {
     TEST("test"),
-    MOVIES("movies");
+    MOVIES("movies"),
+    NET("neuralnets");
 
     // Cannot be null
     private String name;

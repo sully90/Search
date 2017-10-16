@@ -3,18 +3,25 @@ package ml.neuralnet;
 import ml.neuralnet.models.Layer;
 import ml.neuralnet.models.Neuron;
 import ml.neuralnet.models.Topology;
+import org.bson.types.ObjectId;
+import persistence.mongo.WritableObject;
+import persistence.mongo.util.CollectionNames;
+import persistence.mongo.util.ObjectFinder;
+import persistence.mongo.util.ObjectWriter;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Net {
+public class Net implements WritableObject {
 
     private static double errorThresh = 0.2;
 
     private List<Layer> layers;
     private Topology topology;
+
+    private ObjectId _id;
 
     private int numLayers;
 
@@ -43,6 +50,10 @@ public class Net {
             layer.get(layer.getSize() - 1).flagBiasNeuron();
             this.layers.add(layer);
         }
+    }
+
+    private Net() {
+        // For Jackson
     }
 
     private Layer getOutputLayer() {
@@ -165,6 +176,73 @@ public class Net {
             myNet.backProp(targetVal);
         }
 
+//        myNet.writer().save();
         System.out.println("Done!");
+    }
+
+    @Override
+    public ObjectWriter writer() {
+        return new ObjectWriter(CollectionNames.NET, this);
+    }
+
+    @Override
+    public ObjectId getObjectId() {
+        return this._id;
+    }
+
+    public static ObjectFinder<Net> finder() {
+        return new ObjectFinder<>(CollectionNames.NET, Net.class);
+    }
+
+    public static double getErrorThresh() {
+        return errorThresh;
+    }
+
+    public static void setErrorThresh(double errorThresh) {
+        Net.errorThresh = errorThresh;
+    }
+
+    public List<Layer> getLayers() {
+        return layers;
+    }
+
+    public void setLayers(List<Layer> layers) {
+        this.layers = layers;
+    }
+
+    public void setTopology(Topology topology) {
+        this.topology = topology;
+    }
+
+    public int getNumLayers() {
+        return numLayers;
+    }
+
+    public void setNumLayers(int numLayers) {
+        this.numLayers = numLayers;
+    }
+
+    public double getError() {
+        return error;
+    }
+
+    public void setError(double error) {
+        this.error = error;
+    }
+
+    public double getRecentAverageError() {
+        return recentAverageError;
+    }
+
+    public void setRecentAverageError(double recentAverageError) {
+        this.recentAverageError = recentAverageError;
+    }
+
+    public double getRecentAverageErrorSmoothingFactor() {
+        return recentAverageErrorSmoothingFactor;
+    }
+
+    public void setRecentAverageErrorSmoothingFactor(double recentAverageErrorSmoothingFactor) {
+        this.recentAverageErrorSmoothingFactor = recentAverageErrorSmoothingFactor;
     }
 }

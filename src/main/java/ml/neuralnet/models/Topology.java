@@ -11,6 +11,10 @@ public class Topology {
         this.topology = topology;
     }
 
+    private Topology() {
+        // For Jackson
+    }
+
     public Topology(int[] topology) {
         this.topology = new LinkedList<>();
         for (int i : topology) {

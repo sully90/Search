@@ -33,6 +33,11 @@ public class Neuron {
         this.myIndex = myIndex;
     }
 
+    private Neuron() {
+        // For Jackson
+        this.myIndex = 0;
+    }
+
     public double getOutputVal() {
         return this.outputVal;
     }
@@ -113,4 +118,15 @@ public class Neuron {
         }
     }
 
+    public final int getMyIndex() {
+        return myIndex;
+    }
+
+    public double getGradient() {
+        return gradient;
+    }
+
+    public List<Connection> getOutputWeights() {
+        return outputWeights;
+    }
 }

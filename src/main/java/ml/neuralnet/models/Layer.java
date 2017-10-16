@@ -11,10 +11,6 @@ public class Layer {
         this.neurons = new LinkedList<>();
     }
 
-    public Layer(List<Neuron> neurons) {
-        this.neurons = neurons;
-    }
-
     public void add(Neuron neuron) {
         this.neurons.add(neuron);
     }
