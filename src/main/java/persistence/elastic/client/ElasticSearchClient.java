@@ -1,8 +1,10 @@
 /*
+Based on the ElasticSearchClient written by Philipp Wagner:
 Copyright (c) Philipp Wagner. All rights reserved.
 Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-Based on the ElasticSearchClient written by Philipp Wagner, which some changes to use default mappings.
+@author David Sullivan
+Made changes to work with default mappings and also support search and deserialization using Jackson
  */
 
 package persistence.elastic.client;
