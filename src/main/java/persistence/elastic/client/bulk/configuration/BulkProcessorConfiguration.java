@@ -34,7 +34,7 @@ public class BulkProcessorConfiguration {
 
     public BulkProcessor build(final Client client) {
         return BulkProcessor.builder(client, listener)
-                .setName(options.getName())
+//                .setName(options.getName())
                 .setConcurrentRequests(options.getConcurrentRequests())
                 .setBulkActions(options.getBulkActions())
                 .setBulkSize(options.getBulkSize())

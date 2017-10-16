@@ -75,19 +75,13 @@
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>transport</artifactId>
-            <version>5.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.bytefish.elasticutils</groupId>
-            <artifactId>elasticutils-core</artifactId>
-            <version>0.5</version>
+            <version>5.6.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>x-pack-transport</artifactId>
-            <version>5.0.0</version>
+            <version>5.6.2</version>
         </dependency>
 
         <!--<dependency>-->

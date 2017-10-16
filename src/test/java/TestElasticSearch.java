@@ -16,6 +16,35 @@ import java.util.concurrent.TimeUnit;
 public class TestElasticSearch {
 
     @Test
+    public void testDelete() {
+        try {
+            Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
+
+            // Set bulk processing options
+            BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
+                    .setBulkActions(100)
+                    .build());
+
+            ElasticIndices indexName = ElasticIndices.MOVIES;
+
+            // Now wrap the Elastic client in our bulk processing client:
+            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, bulkProcessorConfiguration, Movie.class);
+
+            List<Movie> movies = searchClient.matchAll();
+
+            System.out.println(movies.size());
+
+            long deleted = searchClient.deleteAll();
+
+            System.out.println(deleted);
+
+            System.out.println(searchClient.matchAll().size());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void searchElastic() {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
@@ -66,6 +95,8 @@ public class TestElasticSearch {
             for (Movie movie : Movie.finder().find()) {
                 // Add to elasticsearch
                 searchClient.index(movie);
+                System.out.println(movie.getObjectId().toString());
+//                searchClient.deleteByMongoId(movie.getObjectId());
                 break;
             }
 

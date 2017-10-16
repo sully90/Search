@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.bson.types.ObjectId;
 import persistence.mongo.WritableObject;
 import persistence.elastic.models.Searchable;
@@ -15,6 +16,7 @@ import persistence.mongo.util.ObjectWriter;
 public class Movie implements WritableObject, Searchable {
 
     private ObjectId _id;
+    private String mongoId;
 
     // IMDb fields
     private long budget;
@@ -198,6 +200,17 @@ public class Movie implements WritableObject, Searchable {
     @JsonIgnore
     public ObjectId getObjectId() {
         return this._id;
+    }
+
+    @Override
+    @JsonProperty("mongoId")
+    public String getMongoId() {
+        return this._id.toString();
+    }
+
+    @Override
+    public void setMongoId() {
+        this.mongoId = mongoId;
     }
 
     public static ObjectFinder<Movie> finder() {

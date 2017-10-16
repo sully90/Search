@@ -10,15 +10,24 @@ Made changes to work with default mappings and also support search and deseriali
 package persistence.elastic.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.bson.types.ObjectId;
+import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BulkProcessor;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.reindex.BulkByScrollResponse;
+import org.elasticsearch.index.reindex.DeleteByQueryAction;
+import org.elasticsearch.index.reindex.DeleteByQueryRequestBuilder;
 import org.elasticsearch.search.SearchHit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import persistence.elastic.client.bulk.configuration.BulkProcessorConfiguration;
+import persistence.elastic.query.QueryHelper;
 import persistence.elastic.utils.ElasticIndices;
 import utils.JsonUtils;
 
@@ -30,6 +39,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchClient.class);
 
     private final Client client;
     private final ElasticIndices indexName;
@@ -121,6 +132,35 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
         });
 
         return results;
+    }
+
+    public String deleteById(String id) {
+        DeleteResponse response = this.client
+                .prepareDelete(this.indexName.getIndexName(), this.indexType.getIndexType(), id)
+                .setIndex(this.indexName.getIndexName())
+                .execute()
+                .actionGet();
+        return response.getId();
+    }
+
+    public long deleteByMongoId(ObjectId id) {
+        QueryBuilder qb = QueryHelper.matchField(QueryHelper.Fields.MONGOID.getFieldName(), id.toString());
+        return deleteByQuery(qb);
+    }
+
+    public long deleteAll() {
+        return deleteByQuery(QueryBuilders.matchAllQuery());
+    }
+
+    public long deleteByQuery(QueryBuilder qb) {
+        BulkByScrollResponse response =
+                DeleteByQueryAction.INSTANCE.newRequestBuilder(this.client)
+                .filter(qb)
+                .source(this.indexName.getIndexName())
+                .execute().actionGet();
+
+        long deleted = response.getDeleted();
+        return deleted;
     }
 
     public enum IndexType {
