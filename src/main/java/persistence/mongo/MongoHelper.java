@@ -1,4 +1,4 @@
-package persistence;
+package persistence.mongo;
 
 import com.mongodb.DB;
 
@@ -7,8 +7,8 @@ import com.mongodb.MongoClientURI;
 import org.jongo.Jongo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import persistence.util.DatabaseConnection;
-import persistence.util.DatabaseType;
+import persistence.mongo.util.DatabaseConnection;
+import persistence.mongo.util.DatabaseType;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

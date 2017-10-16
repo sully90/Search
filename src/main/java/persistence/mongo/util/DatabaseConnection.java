@@ -1,4 +1,4 @@
-package persistence.util;
+package persistence.mongo.util;
 
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;

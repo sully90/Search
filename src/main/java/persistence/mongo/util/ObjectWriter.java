@@ -1,9 +1,9 @@
-package persistence.util;
+package persistence.mongo.util;
 
 import com.mongodb.WriteConcern;
 import com.mongodb.WriteResult;
 import org.jongo.MongoCollection;
-import persistence.MongoHelper;
+import persistence.mongo.MongoHelper;
 
 public class ObjectWriter {
 

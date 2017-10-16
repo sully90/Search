@@ -1,4 +1,4 @@
-package persistence.util;
+package persistence.mongo.util;
 
 public enum DatabaseType {
 

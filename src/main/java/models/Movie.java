@@ -6,11 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.bson.types.ObjectId;
-import persistence.WritableObject;
+import persistence.mongo.WritableObject;
 import persistence.elastic.models.Searchable;
-import persistence.util.CollectionNames;
-import persistence.util.ObjectFinder;
-import persistence.util.ObjectWriter;
+import persistence.mongo.util.CollectionNames;
+import persistence.mongo.util.ObjectFinder;
+import persistence.mongo.util.ObjectWriter;
 
 public class Movie implements WritableObject, Searchable {
 

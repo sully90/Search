@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="821b9834-b83f-4808-bfe8-a22dc09478a9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/MongoHelper.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/MongoHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/WritableObject.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/WritableObject.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/CollectionNames.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/CollectionNames.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/DatabaseConnection.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseConnection.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/DatabaseType.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/FindableObject.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/FindableObject.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/ObjectFinder.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/ObjectFinder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/util/ObjectWriter.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/mongo/util/ObjectWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Movie.java" afterPath="$PROJECT_DIR$/src/main/java/models/Movie.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,7 +26,7 @@
       <file leaf-file-name="TestElasticSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
+            <state relative-caret-position="304">
               <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -39,7 +47,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElasticSearchClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ElasticSearchClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
@@ -65,12 +73,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WritableObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/WritableObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MongoHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/MongoHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Movie.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="180">
+              <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,6 +161,10 @@
         <option value="$PROJECT_DIR$/src/test/java/TestMain.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestElasticSearch.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/mongo/util/WritableObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/WritableObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/mongo/MongoHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persistence/mongo/WritableObject.java" />
       </list>
     </option>
   </component>
@@ -197,15 +231,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="persistence" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Search" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Search" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persistence" type="462c0819:PsiDirectoryNode" />
-              <item name="elastic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Search" type="b2602c69:ProjectViewProjectNode" />
@@ -542,7 +567,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/DatabaseConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -591,7 +616,7 @@
         <state relative-caret-position="120">
           <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -606,7 +631,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/DatabaseConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -657,7 +682,7 @@
         <state relative-caret-position="135">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="30" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -670,25 +695,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/CollectionNames.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/CollectionNames.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/DatabaseType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/WritableObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -709,7 +726,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticClient.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/DatabaseConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -842,7 +859,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/ObjectWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/ObjectWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
@@ -850,7 +867,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/util/ObjectFinder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/util/ObjectFinder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
@@ -887,28 +904,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -935,6 +934,42 @@
             <element signature="e#4482#4483#0" expanded="true" />
             <element signature="e#4522#4523#0" expanded="true" />
             <element signature="e#4567#4568#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/MongoHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/mongo/WritableObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="32" column="57" lean-forward="false" selection-start-line="32" selection-start-column="57" selection-end-line="32" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,8 +1,8 @@
-package persistence.util;
+package persistence.mongo.util;
 
 import org.bson.types.ObjectId;
 import org.jongo.MongoCollection;
-import persistence.MongoHelper;
+import persistence.mongo.MongoHelper;
 
 import java.util.Collection;
 
