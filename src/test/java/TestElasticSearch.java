@@ -1,15 +1,17 @@
 
 import models.Movie;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.junit.Test;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
-import persistence.elastic.client.bulk.configuration.BulkProcessorConfiguration;
-import persistence.elastic.client.bulk.options.BulkProcessingOptions;
+import persistence.elastic.query.QueryHelper;
 import persistence.elastic.utils.ElasticIndices;
 import persistence.elastic.utils.ElasticUtils;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -20,17 +22,12 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            // Set bulk processing options
-            BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                    .setBulkActions(100)
-                    .build());
-
             ElasticIndices indexName = ElasticIndices.MOVIES;
 
             // Now wrap the Elastic client in our bulk processing client:
-            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, bulkProcessorConfiguration, Movie.class);
+            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, Movie.class);
 
-            List<Movie> movies = searchClient.matchAll();
+            List<Movie> movies = searchClient.matchAllAndDeserialize();
 
             System.out.println(movies.size());
 
@@ -38,7 +35,7 @@ public class TestElasticSearch {
 
             System.out.println(deleted);
 
-            System.out.println(searchClient.matchAll().size());
+            System.out.println(searchClient.matchAllAndDeserialize().size());
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -49,17 +46,14 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            // Set bulk processing options
-            BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                    .setBulkActions(100)
-                    .build());
-
             ElasticIndices indexName = ElasticIndices.MOVIES;
 
             // Now wrap the Elastic client in our bulk processing client:
-            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, bulkProcessorConfiguration, Movie.class);
+            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, Movie.class);
 
-            List<Movie> movies = searchClient.matchAll();
+//            List<Movie> movies = searchClient.matchAll();
+            QueryBuilder qb = QueryHelper.matchField("title", "Harry Potter");
+            List<Movie> movies = searchClient.searchAndDeserialize(qb);
 
             System.out.println(movies.size());
 
@@ -76,11 +70,6 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            // Set bulk processing options
-            BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-            .setBulkActions(100)
-            .build());
-
             ElasticIndices indexName = ElasticIndices.MOVIES;
 
             // Ensure index
@@ -89,16 +78,23 @@ public class TestElasticSearch {
             System.out.println(client.admin().toString());
 
             // Now wrap the Elastic client in our bulk processing client:
-            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, bulkProcessorConfiguration, Movie.class);
+            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, Movie.class);
 
-            // Get all movies from mongo
+            List<Movie> movies = new ArrayList<>();
             for (Movie movie : Movie.finder().find()) {
-                // Add to elasticsearch
-                searchClient.index(movie);
-                System.out.println(movie.getObjectId().toString());
-//                searchClient.deleteByMongoId(movie.getObjectId());
-                break;
+                movies.add(movie);
             }
+
+            searchClient.index(movies);
+
+//            // Get all movies from mongo
+//            for (Movie movie : Movie.finder().find()) {
+//                // Add to elasticsearch
+//                searchClient.index(movie);
+//                System.out.println(movie.getObjectId().toString());
+////                searchClient.deleteByMongoId(movie.getObjectId());
+////                break;
+//            }
 
             // The Bulk Insert is asynchronous, we give ElasticSearch some time to do the insert:
             searchClient.awaitClose(1, TimeUnit.SECONDS);

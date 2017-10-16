@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class MongoHelper {
 
-    private static final Logger logger = LoggerFactory.getLogger(MongoHelper.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MongoHelper.class);
 
     private static Map<DatabaseType, DatabaseConnection> connectionMap;
 
@@ -25,9 +25,9 @@ public final class MongoHelper {
         MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 
         for (DatabaseType databaseType : DatabaseType.values()) {
-            logger.info(String.format("Attempting to make connection to db %s", databaseType.getLabel()));
+            if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Attempting to make connection to db %s", databaseType.getLabel()));
             DB db = mongoClient.getDB(databaseType.getLabel());
-            logger.info(String.format("Successfully made connection to db %s", databaseType.getLabel()));
+            if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Successfully made connection to db %s", databaseType.getLabel()));
 
             Jongo jongo = new Jongo(db);
 

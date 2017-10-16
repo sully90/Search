@@ -3,9 +3,7 @@ package persistence.elastic.utils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
-import org.elasticsearch.action.admin.indices.mapping.put.PutMappingResponse;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.index.mapper.RootObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

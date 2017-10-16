@@ -8,12 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.bson.types.ObjectId;
 import persistence.mongo.WritableObject;
-import persistence.elastic.models.Searchable;
 import persistence.mongo.util.CollectionNames;
 import persistence.mongo.util.ObjectFinder;
 import persistence.mongo.util.ObjectWriter;
 
-public class Movie implements WritableObject, Searchable {
+public class Movie implements WritableObject {
 
     private ObjectId _id;
     private String mongoId;
@@ -202,14 +201,11 @@ public class Movie implements WritableObject, Searchable {
         return this._id;
     }
 
-    @Override
-    @JsonProperty("mongoId")
     public String getMongoId() {
         return this._id.toString();
     }
 
-    @Override
-    public void setMongoId() {
+    public void setMongoId(String mongoId) {
         this.mongoId = mongoId;
     }
 

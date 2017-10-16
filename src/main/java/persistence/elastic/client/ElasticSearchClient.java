@@ -11,7 +11,6 @@ package persistence.elastic.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.bson.types.ObjectId;
-import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -22,10 +21,11 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.reindex.BulkByScrollResponse;
 import org.elasticsearch.index.reindex.DeleteByQueryAction;
-import org.elasticsearch.index.reindex.DeleteByQueryRequestBuilder;
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.SearchHits;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.bulk.configuration.BulkProcessorConfiguration;
 import persistence.elastic.query.QueryHelper;
 import persistence.elastic.utils.ElasticIndices;
@@ -47,15 +47,22 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
     private final IndexType indexType;
     private final BulkProcessor bulkProcessor;
     private final Class<T> returnClass;
-    private final ObjectMapper mapper = new ObjectMapper();
 
-    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final BulkProcessorConfiguration bulkProcessorConfiguration, Class<T> returnClass) {
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
+    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass) {
         // Default to document indexing
-        this(client, indexName, bulkProcessorConfiguration, returnClass, IndexType.DOCUMENT);
+        this(client, indexName, returnClass, ElasticHelper.getDefaultBulkProcessorConfiguration(), IndexType.DOCUMENT);
     }
 
-    public ElasticSearchClient(final Client client, final ElasticIndices indexName,
-                               final BulkProcessorConfiguration bulkProcessorConfiguration, Class<T> returnClass, IndexType indexType) {
+    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass,
+                               final BulkProcessorConfiguration bulkProcessorConfiguration) {
+        // Default to document indexing
+        this(client, indexName, returnClass, bulkProcessorConfiguration, IndexType.DOCUMENT);
+    }
+
+    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass,
+                               final BulkProcessorConfiguration bulkProcessorConfiguration, final IndexType indexType) {
         this.client = client;
         this.indexName = indexName;
         this.indexType = indexType;
@@ -105,27 +112,74 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
                 .request();
     }
 
-    public List<T> matchAll() {
-        return search(QueryBuilders.matchAllQuery());
+    //------------------------------------- S E A R C H -------------------------------------//
+
+    public SearchHits matchAll() {
+        return matchAll(SearchType.DFS_QUERY_THEN_FETCH);
     }
 
-    public List<T> search(QueryBuilder qb) {
+    public SearchHits matchAll(SearchType searchType) {
+        return search(QueryBuilders.matchAllQuery(), searchType);
+    }
+
+    public SearchHits search(QueryBuilder qb) {
         return search(qb, SearchType.DFS_QUERY_THEN_FETCH);
     }
 
-    public List<T> search(QueryBuilder qb, SearchType searchType) {
+    public SearchHits search(QueryBuilder qb, SearchType searchType) {
         SearchResponse searchResponse = this.client.prepareSearch()
                 .setTypes(this.indexType.getIndexType())
                 .setSearchType(searchType)
-                .setPostFilter(qb)
+                .setQuery(qb)
+                .setExplain(true)
                 .execute().actionGet();
 
-        List<SearchHit> hits = Arrays.asList(searchResponse.getHits().getHits());
+        SearchHits searchHits = searchResponse.getHits();
+        return searchHits;
+    }
+
+    public SearchHits search(QueryBuilder qb, QueryBuilder filter, SearchType searchType) {
+        SearchResponse searchResponse = this.client.prepareSearch()
+                .setTypes(this.indexType.getIndexType())
+                .setSearchType(searchType)
+                .setQuery(qb)
+                .setPostFilter(filter)
+                .setExplain(true)
+                .execute().actionGet();
+
+        SearchHits searchHits = searchResponse.getHits();
+        return searchHits;
+    }
+
+    public List<T> matchAllAndDeserialize() {
+        return matchAllAndDeserialize(SearchType.DFS_QUERY_THEN_FETCH);
+    }
+
+    public List<T> matchAllAndDeserialize(SearchType searchType) {
+        return searchAndDeserialize(QueryBuilders.matchAllQuery(), searchType);
+    }
+
+    public List<T> searchAndDeserialize(QueryBuilder qb) {
+        return searchAndDeserialize(qb, SearchType.DFS_QUERY_THEN_FETCH);
+    }
+
+    public List<T> searchAndDeserialize(QueryBuilder qb, SearchType searchType) {
+        SearchHits searchHits = search(qb, searchType);
+
+        return deserialize(searchHits);
+    }
+
+    public List<T> deserialize(SearchHits searchHits) {
+        List<SearchHit> hits = Arrays.asList(searchHits.getHits());
+        return deserialize(hits);
+    }
+
+    public List<T> deserialize(List<SearchHit> searchHits) {
         List<T> results = new ArrayList<>();
 
-        hits.forEach(hit -> {
+        searchHits.forEach(hit -> {
             try {
-                results.add(this.mapper.readValue(hit.getSourceAsString(), returnClass));
+                results.add(MAPPER.readValue(hit.getSourceAsString(), returnClass));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -133,6 +187,8 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
 
         return results;
     }
+
+    //------------------------------------- D E L E T E -------------------------------------//
 
     public String deleteById(String id) {
         DeleteResponse response = this.client
@@ -162,6 +218,8 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
         long deleted = response.getDeleted();
         return deleted;
     }
+
+    //------------------------------------- E N D -------------------------------------//
 
     public enum IndexType {
         DOCUMENT("document");
