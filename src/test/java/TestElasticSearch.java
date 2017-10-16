@@ -1,13 +1,6 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import models.Movie;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHitField;
 import org.junit.Test;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
@@ -18,7 +11,6 @@ import persistence.elastic.utils.ElasticUtils;
 
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class TestElasticSearch {
@@ -38,7 +30,7 @@ public class TestElasticSearch {
             // Now wrap the Elastic client in our bulk processing client:
             ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, bulkProcessorConfiguration, Movie.class);
 
-            List<Movie> movies = searchClient.search("title", "Avatar");
+            List<Movie> movies = searchClient.matchAll();
 
             System.out.println(movies.size());
 

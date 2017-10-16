@@ -31,16 +31,18 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
 
     private final Client client;
     private final ElasticIndices indexName;
-    private final String indexType;
+    private final IndexType indexType;
     private final BulkProcessor bulkProcessor;
     private final Class<T> returnClass;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     public ElasticSearchClient(final Client client, final ElasticIndices indexName, final BulkProcessorConfiguration bulkProcessorConfiguration, Class<T> returnClass) {
-        this(client, indexName, bulkProcessorConfiguration, returnClass, "document");
+        // Default to document indexing
+        this(client, indexName, bulkProcessorConfiguration, returnClass, IndexType.DOCUMENT);
     }
 
     public ElasticSearchClient(final Client client, final ElasticIndices indexName,
-                               final BulkProcessorConfiguration bulkProcessorConfiguration, Class<T> returnClass, String indexType) {
+                               final BulkProcessorConfiguration bulkProcessorConfiguration, Class<T> returnClass, IndexType indexType) {
         this.client = client;
         this.indexName = indexName;
         this.indexType = indexType;
@@ -85,21 +87,22 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
     private IndexRequest createIndexRequest(byte[] messageBytes) {
         return this.client.prepareIndex()
                 .setIndex(this.indexName.getIndexName())
-                .setType(this.indexType)
+                .setType(this.indexType.getIndexType())
                 .setSource(messageBytes)
                 .request();
     }
 
-    public List<T> search(String field, String value) {
-        return search(field, value, SearchType.DFS_QUERY_THEN_FETCH);
+    public List<T> matchAll() {
+        return search(QueryBuilders.matchAllQuery());
     }
 
-    public List<T> search(String field, String value, SearchType searchType) {
-//        QueryBuilder qb = QueryBuilders.disMaxQuery().add(QueryBuilders.termQuery(field, value));
-        QueryBuilder qb = QueryBuilders.matchAllQuery();
+    public List<T> search(QueryBuilder qb) {
+        return search(qb, SearchType.DFS_QUERY_THEN_FETCH);
+    }
 
+    public List<T> search(QueryBuilder qb, SearchType searchType) {
         SearchResponse searchResponse = this.client.prepareSearch()
-                .setTypes(this.indexType)
+                .setTypes(this.indexType.getIndexType())
                 .setSearchType(searchType)
                 .setPostFilter(qb)
                 .execute().actionGet();
@@ -107,16 +110,28 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
         List<SearchHit> hits = Arrays.asList(searchResponse.getHits().getHits());
         List<T> results = new ArrayList<>();
 
-        ObjectMapper mapper = new ObjectMapper();
-
         hits.forEach(hit -> {
             try {
-                results.add(mapper.readValue(hit.getSourceAsString(), returnClass));
+                results.add(this.mapper.readValue(hit.getSourceAsString(), returnClass));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
 
         return results;
+    }
+
+    public enum IndexType {
+        DOCUMENT("document");
+
+        String indexType;
+
+        IndexType(String indexType) {
+            this.indexType = indexType;
+        }
+
+        public String getIndexType() {
+            return this.indexType;
+        }
     }
 }
