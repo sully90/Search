@@ -1,6 +1,7 @@
 package ml.neuralnet;
 
 import ml.neuralnet.models.Layer;
+import ml.neuralnet.models.Learnable;
 import ml.neuralnet.models.Neuron;
 import ml.neuralnet.models.Topology;
 import org.bson.types.ObjectId;
@@ -135,6 +136,36 @@ public class Net implements WritableObject {
     public Topology getTopology() {
         return topology;
     }
+
+//    public static void trainNeuralNet(Net myNet, List<List<Double>> inputVals, List<List<Double>> targetVals) {
+//        int trainingPass = 0;
+//        for(int i = 0; i < inputVals.size(); i++) {
+//            trainingPass++;
+//
+//            System.out.println(String.format("Training pass: %d", trainingPass));
+//
+//            List<Double> inputVal = inputVals.get(i);
+//            List<Double> targetVal = targetVals.get(i);
+//
+//            // feed forwards
+//            myNet.feedForward(inputVal);
+//
+//            // Get the results
+//            List<Double> results = myNet.getResults();
+//
+//            System.out.println("Results:");
+//            for(Double res : results) {
+//                System.out.println(res);
+//            }
+//            System.out.println("Error = " + myNet.error);
+//
+//            // back-prop
+//            myNet.backProp(targetVal);
+//        }
+//
+////        myNet.writer().save();
+//        System.out.println("Done!");
+//    }
 
     public static void main(String[] args) {
         Topology topology = new Topology(new int[]{1, 5, 1});

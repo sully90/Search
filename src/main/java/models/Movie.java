@@ -4,15 +4,16 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import ml.neuralnet.models.Learnable;
 import org.bson.types.ObjectId;
 import persistence.mongo.WritableObject;
 import persistence.mongo.util.CollectionNames;
 import persistence.mongo.util.ObjectFinder;
 import persistence.mongo.util.ObjectWriter;
 
-public class Movie implements WritableObject {
+public class Movie implements WritableObject, Learnable {
 
     private ObjectId _id;
     private String mongoId;
