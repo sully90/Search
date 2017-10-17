@@ -198,51 +198,23 @@ public class Net implements WritableObject {
         return errorThresh;
     }
 
-    public static void setErrorThresh(double errorThresh) {
-        Net.errorThresh = errorThresh;
-    }
-
     public List<Layer> getLayers() {
         return layers;
-    }
-
-    public void setLayers(List<Layer> layers) {
-        this.layers = layers;
-    }
-
-    public void setTopology(Topology topology) {
-        this.topology = topology;
     }
 
     public int getNumLayers() {
         return numLayers;
     }
 
-    public void setNumLayers(int numLayers) {
-        this.numLayers = numLayers;
-    }
-
     public double getError() {
         return error;
-    }
-
-    public void setError(double error) {
-        this.error = error;
     }
 
     public double getRecentAverageError() {
         return recentAverageError;
     }
 
-    public void setRecentAverageError(double recentAverageError) {
-        this.recentAverageError = recentAverageError;
-    }
-
     public double getRecentAverageErrorSmoothingFactor() {
         return recentAverageErrorSmoothingFactor;
-    }
-
-    public void setRecentAverageErrorSmoothingFactor(double recentAverageErrorSmoothingFactor) {
-        this.recentAverageErrorSmoothingFactor = recentAverageErrorSmoothingFactor;
     }
 }
