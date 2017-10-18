@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ml.neuralnet.models.Learnable;
@@ -15,6 +16,7 @@ import persistence.mongo.WritableObject;
 import persistence.mongo.util.CollectionNames;
 import persistence.mongo.util.ObjectFinder;
 import persistence.mongo.util.ObjectWriter;
+import utils.Duration;
 
 public class Movie implements WritableObject, Learnable {
 
@@ -224,5 +226,16 @@ public class Movie implements WritableObject, Learnable {
                 Double.valueOf(this.getAverageVote())
         ));
         return inputVals;
+    }
+
+    @JsonIgnore
+    public long getTimeSinceRelease() {
+        return this.getTimeSinceRelease(TimeUnit.DAYS);
+    }
+
+    @JsonIgnore
+    public long getTimeSinceRelease(TimeUnit timeUnit) {
+        Duration duration = new Duration(this.getReleaseDate(), new Date());
+        return duration.getDuration(timeUnit);
     }
 }

@@ -18,9 +18,11 @@ import persistence.elastic.client.ElasticSearchClient;
 import persistence.elastic.ml.ScoreScript;
 import persistence.elastic.ml.builders.ScoreScriptBuilder;
 import persistence.elastic.utils.ElasticIndices;
+import utils.Duration;
 
 import java.net.UnknownHostException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class TestNeuralNet {
 
@@ -39,6 +41,9 @@ public class TestNeuralNet {
 //                "overview",
 //                "James Bond 007"
 //        );
+
+        // The current date and time
+        Date currentDate = new Date();
 
         String queryText = "James Bond 007";
 
@@ -88,7 +93,7 @@ public class TestNeuralNet {
         Movie movie;
 
         // Init the neural net
-        Topology topology = new Topology(Arrays.asList(4, 10, 1));  // 3 input, 10 hidden, 1 output
+        Topology topology = new Topology(Arrays.asList(5, 10, 1));  // 3 input, 10 hidden, 1 output
         Net myNet = new Net(topology);
 
         while (nIterations > 0) {
@@ -126,9 +131,13 @@ public class TestNeuralNet {
                 movie = movies.get(m);
 
                 List<Double> inputVals = movie.getInputVals();
+                // Add elasticsearch internal score to inputVals
                 inputVals.add(Double.valueOf(score));
                 // Use the query sentiment as an input value
                 inputVals.add(Double.valueOf(meanSentiment));
+                // Also use the time elapsed since movie release
+                long timeSinceRelease = movie.getTimeSinceRelease(TimeUnit.DAYS);
+                inputVals.add(Double.valueOf(timeSinceRelease));
 
                 // Target val is the normalised rank
                 List<Double> targetVal = new LinkedList<>(Arrays.asList(Double.valueOf(newNormalisedRank)));

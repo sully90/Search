@@ -12,6 +12,7 @@ public final class Duration {
     private final Date date2;
 
     public Duration(final Date date1, final Date date2) {
+        // date2 should be the later date
         this.date1 = date1;
         this.date2 = date2;
     }
