@@ -2,7 +2,7 @@
 import ml.neuralnet.Net;
 import ml.neuralnet.models.Learnable;
 import ml.neuralnet.models.Topology;
-import ml.nlp.opennlp.StandordNLPHelper;
+import ml.nlp.opennlp.StanfordNLPHelper;
 import models.Movie;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
@@ -42,11 +42,12 @@ public class TestNeuralNet {
 
         String queryText = "James Bond 007";
 
+        StanfordNLPHelper nlpHelper = new StanfordNLPHelper();
         // Perform a sentimental analysis on the query
-        Map<String, String> sentimentMap = StandordNLPHelper.getSentimentMap(queryText);
+        Map<String, String> sentimentMap = nlpHelper.getSentimentMap(queryText);
 
         // Get a numerical score of the sentiment
-        double meanSentiment = StandordNLPHelper.getMeanSentiment(queryText);
+        double meanSentiment = nlpHelper.getMeanSentiment(queryText);
         System.out.println("Sentiment: " + sentimentMap.get(queryText) + " : " + meanSentiment);
 
         QueryBuilder match = QueryBuilders.multiMatchQuery(

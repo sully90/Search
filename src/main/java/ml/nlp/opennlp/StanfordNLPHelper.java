@@ -11,30 +11,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-public class StandordNLPHelper {
+public class StanfordNLPHelper {
 
-    private static Properties getDefaultProperties() {
-        Properties props = new Properties();
-        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
-        return props;
+    private Properties properties;
+    private StanfordCoreNLP pipeline;
+
+    public StanfordNLPHelper() {
+        this(StanfordNLPHelper.getDefaultProperties());
     }
 
-    private static Annotation getDefaultAnnotation(String text) {
-        return getPipeline().process(text);
+    public StanfordNLPHelper(Properties properties) {
+        this.properties = properties;
+        this.pipeline = new StanfordCoreNLP(this.properties);
     }
 
-    public static StanfordCoreNLP getPipeline() {
-        return getPipeline(getDefaultProperties());
+    private Annotation getDefaultAnnotation(String text) {
+        return this.pipeline.process(text);
     }
 
-    public static StanfordCoreNLP getPipeline(Properties props) {
-        return new StanfordCoreNLP(props);
-    }
-
-    public static Map<String, String> getSentimentMap(String text) {
+    public Map<String, String> getSentimentMap(String text) {
         // Performs a sentimental analysis on each sentence in text
 
-        Annotation annotation = getDefaultAnnotation(text);
+        Annotation annotation = this.getDefaultAnnotation(text);
 
         Map<String, String> sentimentMap = new LinkedHashMap<>();
 
@@ -47,17 +45,23 @@ public class StandordNLPHelper {
         return sentimentMap;
     }
 
-    public static double getMeanSentiment(String text) throws Exception {
+    public double getMeanSentiment(String text) throws Exception {
         // Computes the mean sentiment for a block of text, by individually
         // analysing each sentence
-        Map<String, String> sentimentMap = getSentimentMap(text);
+        Map<String, String> sentimentMap = this.getSentimentMap(text);
         double meanSentiment = 0;
 
         for(String key : sentimentMap.keySet()) {
-            meanSentiment += getSentimentCategory(sentimentMap.get(key));
+            meanSentiment += StanfordNLPHelper.getSentimentCategory(sentimentMap.get(key));
         }
 
         return meanSentiment / (double) sentimentMap.size();
+    }
+
+    public static Properties getDefaultProperties() {
+        Properties props = new Properties();
+        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+        return props;
     }
 
     public static double getSentimentCategory(String sentiment) throws Exception {

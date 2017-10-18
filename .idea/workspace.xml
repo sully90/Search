@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="821b9834-b83f-4808-bfe8-a22dc09478a9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" afterPath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" afterPath="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1167">
-              <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+            <state relative-caret-position="-376">
+              <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,13 +71,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StandordNLPHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java">
+      <file leaf-file-name="StanfordNLPHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="59" column="60" lean-forward="false" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+            <state relative-caret-position="180">
+              <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#844#845#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/TestStanfordNLP.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -163,7 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/persistence/ElasticsearchHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/JsonUtilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/ElasticClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ElasticIndex.java" />
@@ -209,11 +213,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Movie.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/models/Learnable.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ElasticHelper.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java" />
       </list>
     </option>
   </component>
@@ -347,7 +352,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestNeuralNet.test">
+  <component name="RunManager" selected="JUnit.TestStanfordNLP.test">
     <configuration name="Net" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -537,8 +542,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.TestNeuralNet.test" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestStanfordNLP.test" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestStanfordNLP.test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestNeuralNet.test" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.TestNeuralNet.testMongoFind" />
         <item index="3" class="java.lang.String" itemvalue="Application.Net" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.TestMain.testDuration" />
@@ -574,14 +579,8 @@
     <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 02m 14s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 51m 36s.xml">
-      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 52m 00s.xml">
-      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 56m 51s.xml">
-      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
+    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 17m 38s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 57m 06s.xml">
       <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
@@ -590,6 +589,12 @@
       <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 58m 40s.xml">
+      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 23h 17m 59s.xml">
+      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 23h 18m 37s.xml">
       <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -943,16 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestStanfordNLP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -979,22 +974,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="59" column="60" lean-forward="false" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+        <state relative-caret-position="-376">
+          <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestStanfordNLP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1167">
-          <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+        <state relative-caret-position="120">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="18" lean-forward="false" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
           </folding>
         </state>
       </provider>
