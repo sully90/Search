@@ -87,12 +87,12 @@ public class TestNeuralNet {
             System.out.println();
         }
 
-        int nIterations = 10;
+        int nIterations = 1000;
         Random random = new Random();
         Movie movie;
 
         // Init the neural net
-        Topology topology = new Topology(Arrays.asList(5, 10, 1));  // 3 input, 10 hidden, 1 output
+        Topology topology = new Topology(Arrays.asList(5, 10, 1));  // 5 input, 10 hidden, 1 output
         Net myNet = new Net(topology);
 
         while (nIterations > 0) {
@@ -128,15 +128,13 @@ public class TestNeuralNet {
 
                 // Input vals
                 movie = movies.get(m);
+                score = searchHits.getAt(m).getScore();
 
                 List<Double> inputVals = movie.getInputVals();
                 // Add elasticsearch internal score to inputVals
                 inputVals.add(Double.valueOf(score));
                 // Use the query sentiment as an input value
                 inputVals.add(Double.valueOf(meanSentiment));
-                // Also use the time elapsed since movie release
-                long timeSinceRelease = movie.getTimeSinceRelease(TimeUnit.DAYS);
-                inputVals.add(Double.valueOf(timeSinceRelease));
 
                 // Target val is the normalised rank
                 List<Double> targetVal = new LinkedList<>(Arrays.asList(Double.valueOf(newNormalisedRank)));
@@ -144,19 +142,19 @@ public class TestNeuralNet {
                 // Do the training step
                 List<Double> results = myNet.executeTrainingStep(inputVals, targetVal);
 
-//                // Print the inputs
-//                System.out.println("Inputs: " + inputVals);
-//
-//                // Print the target
-//                System.out.println("Target: " + targetVal);
-//
-//                // Print the results
-//                System.out.println("Results: " + results);
-//                System.out.println();
-//
-//                // Error
-//                System.out.println("Error: " + myNet.getRecentAverageError());
-//                System.out.println();
+                // Print the inputs
+                System.out.println("Inputs: " + inputVals);
+
+                // Print the target
+                System.out.println("Target: " + targetVal);
+
+                // Print the results
+                System.out.println("Results: " + results);
+                System.out.println();
+
+                // Error
+                System.out.println("Error: " + myNet.getRecentAverageError());
+                System.out.println();
             }
 
             // Perform a new random iteration

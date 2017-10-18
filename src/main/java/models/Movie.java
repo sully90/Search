@@ -223,7 +223,8 @@ public class Movie implements WritableObject, Learnable {
     public List<Double> getInputVals() {
         List<Double> inputVals = new LinkedList<>(Arrays.asList(
                 Double.valueOf(this.getPopularity()),
-                Double.valueOf(this.getAverageVote())
+                Double.valueOf(this.getAverageVote()),
+                Double.valueOf(this.getTimeSinceRelease(TimeUnit.DAYS))
         ));
         return inputVals;
     }
