@@ -1,6 +1,8 @@
 
 import ml.neuralnet.Net;
+import ml.neuralnet.models.Learnable;
 import ml.neuralnet.models.Topology;
+import ml.nlp.opennlp.StandordNLPHelper;
 import models.Movie;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
@@ -18,15 +20,12 @@ import persistence.elastic.ml.builders.ScoreScriptBuilder;
 import persistence.elastic.utils.ElasticIndices;
 
 import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TestNeuralNet {
 
     @Test
-    public void test() {
+    public void test() throws Exception {
         Client client = null;
         try {
             client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
@@ -41,8 +40,17 @@ public class TestNeuralNet {
 //                "James Bond 007"
 //        );
 
+        String queryText = "James Bond 007";
+
+        // Perform a sentimental analysis on the query
+        Map<String, String> sentimentMap = StandordNLPHelper.getSentimentMap(queryText);
+
+        // Get a numerical score of the sentiment
+        double sentimentCategory = StandordNLPHelper.getSentimentCategory(sentimentMap.get(queryText));
+        System.out.println("Sentiment: " + sentimentMap.get(queryText) + " : " + sentimentCategory);
+
         QueryBuilder match = QueryBuilders.multiMatchQuery(
-                "James Bond 007", "title", "overview", "tagLine"
+                queryText, "title", "overview", "tagLine"
         );
 
         ScoreScript<Movie> scoreScript = new ScoreScript<>(Movie.class);
@@ -74,12 +82,12 @@ public class TestNeuralNet {
             System.out.println();
         }
 
-        int nIterations = 1000000;
+        int nIterations = 10;
         Random random = new Random();
         Movie movie;
 
         // Init the neural net
-        Topology topology = new Topology(Arrays.asList(3, 10, 1));  // 3 input, 10 hidden, 1 output
+        Topology topology = new Topology(Arrays.asList(4, 10, 1));  // 3 input, 10 hidden, 1 output
         Net myNet = new Net(topology);
 
         while (nIterations > 0) {
@@ -92,10 +100,10 @@ public class TestNeuralNet {
             // New scoring: boost the hit the user chose to the top of the list (normalisedRank = 1), and retrain
             // the model using all hits in their new order
 
-            float rank = (float) nhits-ix;
-            float normalisedRank = normalise(rank, 0, nhits-1);  // correct, do not change
+            double rank = (double) nhits-ix;
+            double normalisedRank = Learnable.normalise(rank, 0, nhits-1);  // correct, do not change
 
-            System.out.println(nhits + " : " + ix + " : " + normalisedRank);
+//            System.out.println(nhits + " : " + ix + " : " + normalisedRank);
 
             SearchHit mostRelevantHit = searchHits.getAt(i);
             Movie mostRelevantMovie = movies.get(i);
@@ -109,15 +117,17 @@ public class TestNeuralNet {
             // Retrain the model based on the features
             for (int m = 0; m < movies.size() - 1; m++) {
                 // m is the new rank
-                float newNormalisedRank = normalise(m, 0, nhits-1);
+                double newNormalisedRank = Learnable.normalise(m, 0, nhits-1);
                 // This is our targetVal
                 // Perform a training step
 
                 // Input vals
                 movie = movies.get(m);
-                List<Double> inputVals = new LinkedList<>(Arrays.asList(Double.valueOf(movie.getPopularity()),
-                        Double.valueOf(movie.getAverageVote()),
-                        Double.valueOf(score)));
+
+                List<Double> inputVals = movie.getInputVals();
+                inputVals.add(Double.valueOf(score));
+                // Use the query sentiment as an input value
+                inputVals.add(Double.valueOf(sentimentCategory));
 
                 // Target val is the normalised rank
                 List<Double> targetVal = new LinkedList<>(Arrays.asList(Double.valueOf(newNormalisedRank)));
@@ -125,24 +135,26 @@ public class TestNeuralNet {
                 // Do the training step
                 List<Double> results = Net.executeTrainingStep(myNet, inputVals, targetVal);
 
-                // Print the inputs
-                System.out.println("Inputs: " + inputVals);
-
-                // Print the target
-                System.out.println("Target: " + targetVal);
-
-                // Print the results
-                System.out.println("Results: " + results);
-                System.out.println();
-
-                // Error
-                System.out.println("Error: " + myNet.getRecentAverageError());
-                System.out.println();
+//                // Print the inputs
+//                System.out.println("Inputs: " + inputVals);
+//
+//                // Print the target
+//                System.out.println("Target: " + targetVal);
+//
+//                // Print the results
+//                System.out.println("Results: " + results);
+//                System.out.println();
+//
+//                // Error
+//                System.out.println("Error: " + myNet.getRecentAverageError());
+//                System.out.println();
             }
 
             // Perform a new random iteration
             nIterations--;
         }
+
+        System.out.println("Error: " + myNet.getRecentAverageError());
 
     }
 

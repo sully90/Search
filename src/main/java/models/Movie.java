@@ -3,7 +3,10 @@ package models;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ml.neuralnet.models.Learnable;
@@ -212,5 +215,14 @@ public class Movie implements WritableObject, Learnable {
 
     public static ObjectFinder<Movie> finder() {
         return new ObjectFinder<Movie>(CollectionNames.MOVIES, Movie.class);
+    }
+
+    @Override
+    public List<Double> getInputVals() {
+        List<Double> inputVals = new LinkedList<>(Arrays.asList(
+                Double.valueOf(this.getPopularity()),
+                Double.valueOf(this.getAverageVote())
+        ));
+        return inputVals;
     }
 }
