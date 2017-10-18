@@ -137,17 +137,17 @@ public class Net implements WritableObject {
         return topology;
     }
 
-    public static List<Double> executeTrainingStep(Net myNet, List<Double> inputVals, List<Double> targetVals) {
+    public List<Double> executeTrainingStep(List<Double> inputVals, List<Double> targetVals) {
         // Executes a single feed-forward and back-prop training step
 
         // Feed-forward
-        myNet.feedForward(inputVals);
+        this.feedForward(inputVals);
 
         // Get the results
-        List<Double> results = myNet.getResults();
+        List<Double> results = this.getResults();
 
         // Back-prop
-        myNet.backProp(targetVals);
+        this.backProp(targetVals);
 
         // Return the results
         return results;

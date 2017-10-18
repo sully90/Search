@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="821b9834-b83f-4808-bfe8-a22dc09478a9" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ml/nlp/opennlp/StandordNLPHelper.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Movie.java" afterPath="$PROJECT_DIR$/src/main/java/models/Movie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/utils/Duration.java" afterPath="$PROJECT_DIR$/src/main/java/utils/Duration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" afterPath="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" afterPath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,8 +19,8 @@
       <file leaf-file-name="Net.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="137">
+              <caret line="142" column="23" lean-forward="true" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="138" column="81" lean-forward="false" selection-start-line="138" selection-start-column="81" selection-end-line="138" selection-end-column="81" />
+            <state relative-caret-position="290">
+              <caret line="149" column="2" lean-forward="true" selection-start-line="149" selection-start-column="2" selection-end-line="149" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Duration.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Duration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/Duration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -184,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ml/builders/ScriptBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ml/ScoreScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ml/builders/ScoreScriptBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/models/Learnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ElasticHelper.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -192,8 +189,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Movie.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Duration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
       </list>
     </option>
   </component>
@@ -541,9 +539,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 21h 11m 32s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestNeuralNet_test - 2017.10.18 at 21h 19m 19s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
@@ -563,6 +558,9 @@
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 40m 30s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 42m 21s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestStanfordNLP_test - 2017.10.18 at 23h 17m 59s.xml">
@@ -585,7 +583,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30836454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30836454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -840,6 +838,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1890">
           <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+            <element signature="e#1068#1069#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1167#1168#0" expanded="true" />
+            <element signature="e#1223#1224#0" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#3629#3630#0" expanded="true" />
+            <element signature="e#3659#3660#0" expanded="true" />
+            <element signature="e#3694#3695#0" expanded="true" />
+            <element signature="e#3725#3726#0" expanded="true" />
+            <element signature="e#3775#3776#0" expanded="true" />
+            <element signature="e#3811#3812#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -908,16 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestStanfordNLP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -966,21 +973,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Duration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="138" column="81" lean-forward="false" selection-start-line="138" selection-start-column="81" selection-end-line="138" selection-end-column="81" />
+        <state relative-caret-position="195">
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="142" column="23" lean-forward="true" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Duration.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="290">
+          <caret line="149" column="2" lean-forward="true" selection-start-line="149" selection-start-column="2" selection-end-line="149" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

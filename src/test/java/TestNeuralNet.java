@@ -143,7 +143,7 @@ public class TestNeuralNet {
                 List<Double> targetVal = new LinkedList<>(Arrays.asList(Double.valueOf(newNormalisedRank)));
 
                 // Do the training step
-                List<Double> results = Net.executeTrainingStep(myNet, inputVals, targetVal);
+                List<Double> results = myNet.executeTrainingStep(inputVals, targetVal);
 
 //                // Print the inputs
 //                System.out.println("Inputs: " + inputVals);
