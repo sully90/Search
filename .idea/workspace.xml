@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="821b9834-b83f-4808-bfe8-a22dc09478a9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_efficient_java_matrix_library_ejml_0_23.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_io7m_xom_xom_1_2_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_jollyday_jollyday_0_4_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_corenlp_3_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_corenlp_models_3_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_parser_3_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_json_javax_json_api_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_2_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_xalan_2_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_3_03.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_9_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Learnable.class" afterPath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Learnable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/models/Movie.class" afterPath="$PROJECT_DIR$/target/classes/models/Movie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestNeuralNet.class" afterPath="$PROJECT_DIR$/target/test-classes/TestNeuralNet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Search.iml" afterPath="$PROJECT_DIR$/Search.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ml/neuralnet/models/Learnable.java" afterPath="$PROJECT_DIR$/src/main/java/ml/neuralnet/models/Learnable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Movie.java" afterPath="$PROJECT_DIR$/src/main/java/models/Movie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" afterPath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -51,8 +31,8 @@
       <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-734">
-              <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+            <state relative-caret-position="-1167">
+              <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,8 +73,8 @@
       <file leaf-file-name="StandordNLPHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
+            <state relative-caret-position="373">
+              <caret line="59" column="60" lean-forward="false" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -230,9 +210,9 @@
         <option value="$PROJECT_DIR$/src/main/java/models/Movie.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/models/Learnable.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestStanfordNLP.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/persistence/elastic/ElasticHelper.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
       </list>
     </option>
@@ -582,9 +562,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 21h 09m 55s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestNeuralNet_test - 2017.10.18 at 21h 11m 32s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
@@ -592,6 +569,9 @@
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestNeuralNet_test - 2017.10.18 at 21h 19m 55s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 02m 14s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestStanfordNLP_test - 2017.10.18 at 20h 51m 36s.xml">
@@ -981,16 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="65" column="32" lean-forward="false" selection-start-line="65" selection-start-column="32" selection-end-line="65" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/ElasticHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1009,10 +979,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="59" column="60" lean-forward="false" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-734">
-          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+        <state relative-caret-position="-1167">
+          <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

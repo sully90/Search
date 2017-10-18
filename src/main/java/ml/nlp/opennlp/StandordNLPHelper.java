@@ -47,6 +47,19 @@ public class StandordNLPHelper {
         return sentimentMap;
     }
 
+    public static double getMeanSentiment(String text) throws Exception {
+        // Computes the mean sentiment for a block of text, by individually
+        // analysing each sentence
+        Map<String, String> sentimentMap = getSentimentMap(text);
+        double meanSentiment = 0;
+
+        for(String key : sentimentMap.keySet()) {
+            meanSentiment += getSentimentCategory(sentimentMap.get(key));
+        }
+
+        return meanSentiment / (double) sentimentMap.size();
+    }
+
     public static double getSentimentCategory(String sentiment) throws Exception {
         double category;
         switch (sentiment.toLowerCase()) {

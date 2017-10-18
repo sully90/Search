@@ -46,8 +46,8 @@ public class TestNeuralNet {
         Map<String, String> sentimentMap = StandordNLPHelper.getSentimentMap(queryText);
 
         // Get a numerical score of the sentiment
-        double sentimentCategory = StandordNLPHelper.getSentimentCategory(sentimentMap.get(queryText));
-        System.out.println("Sentiment: " + sentimentMap.get(queryText) + " : " + sentimentCategory);
+        double meanSentiment = StandordNLPHelper.getMeanSentiment(queryText);
+        System.out.println("Sentiment: " + sentimentMap.get(queryText) + " : " + meanSentiment);
 
         QueryBuilder match = QueryBuilders.multiMatchQuery(
                 queryText, "title", "overview", "tagLine"
@@ -127,7 +127,7 @@ public class TestNeuralNet {
                 List<Double> inputVals = movie.getInputVals();
                 inputVals.add(Double.valueOf(score));
                 // Use the query sentiment as an input value
-                inputVals.add(Double.valueOf(sentimentCategory));
+                inputVals.add(Double.valueOf(meanSentiment));
 
                 // Target val is the normalised rank
                 List<Double> targetVal = new LinkedList<>(Arrays.asList(Double.valueOf(newNormalisedRank)));
