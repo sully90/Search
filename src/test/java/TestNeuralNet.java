@@ -2,7 +2,7 @@
 import ml.neuralnet.Net;
 import ml.neuralnet.models.Learnable;
 import ml.neuralnet.models.Topology;
-import ml.nlp.opennlp.StanfordNLPHelper;
+import ml.nlp.stanford.StanfordNLPHelper;
 import models.Movie;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
@@ -18,7 +18,6 @@ import persistence.elastic.client.ElasticSearchClient;
 import persistence.elastic.ml.ScoreScript;
 import persistence.elastic.ml.builders.ScoreScriptBuilder;
 import persistence.elastic.utils.ElasticIndices;
-import utils.Duration;
 
 import java.net.UnknownHostException;
 import java.util.*;

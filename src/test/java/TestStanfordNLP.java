@@ -1,4 +1,4 @@
-import ml.nlp.opennlp.StanfordNLPHelper;
+import ml.nlp.stanford.StanfordNLPHelper;
 import org.junit.Test;
 
 import java.util.Map;
