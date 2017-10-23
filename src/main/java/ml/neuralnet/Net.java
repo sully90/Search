@@ -58,22 +58,22 @@ public class Net implements WritableObject {
     }
 
     private Layer getOutputLayer() {
-        return this.layers.get(this.layers.size() - 1);
+        return this.getLayer(this.layers.size() - 1);
     }
 
     public void feedForward(final List<Double> inputVals) {
-        assert(inputVals.size() == this.layers.get(0).getSize() - 1);  // - 1 to account for bias
+        assert(inputVals.size() == this.getLayer(0).getSize() - 1);  // - 1 to account for bias
 
         // Assign (latch) the input values into the input neurons
         for(int i = 0; i < inputVals.size(); i++) {
-            this.layers.get(0).get(i).setOutputVal(inputVals.get(i));
+            this.getLayer(0).get(i).setOutputVal(inputVals.get(i));
         }
 
         // Forward propagate
         for(int layerNum = 1; layerNum < this.layers.size(); layerNum++) {  // skip input, start with first hidden layer
-            Layer prevLayer = this.layers.get(layerNum - 1);
-            for(int n = 0; n < this.layers.get(layerNum).getSize() - 1; n++) {
-                this.layers.get(layerNum).get(n).feedForward(prevLayer);
+            Layer prevLayer = this.getLayer(layerNum - 1);
+            for(int n = 0; n < this.getLayer(layerNum).getSize() - 1; n++) {
+                this.getLayer(layerNum).get(n).feedForward(prevLayer);
             }
         }
     }
@@ -102,8 +102,8 @@ public class Net implements WritableObject {
 
         // Calculate gradients on hidden layers
         for(int layerNum = this.layers.size() - 2; layerNum > 0; layerNum--) {  // start with the right most hidden layer
-            Layer hiddenLayer = this.layers.get(layerNum);
-            Layer nextLayer = this.layers.get(layerNum + 1);
+            Layer hiddenLayer = this.getLayer(layerNum);
+            Layer nextLayer = this.getLayer(layerNum + 1);
 
             for(int n = 0; n < hiddenLayer.getSize(); n++) {
                 hiddenLayer.get(n).calcHiddenGradients(nextLayer);
@@ -113,8 +113,8 @@ public class Net implements WritableObject {
         // For all layers from outputs to first hidden layer,
         // update connection weights
         for(int layerNum = this.layers.size() - 1; layerNum > 0; layerNum--) {  // go through all layers, starting at right most and dont include the input layer (as theres no input weights)
-            Layer layer = this.layers.get(layerNum);
-            Layer prevLayer = this.layers.get(layerNum - 1);
+            Layer layer = this.getLayer(layerNum);
+            Layer prevLayer = this.getLayer(layerNum - 1);
 
             for(int n = 0; n < layer.getSize() - 1; n++) {
                 layer.get(n).updateInputWeights(prevLayer);
@@ -195,6 +195,10 @@ public class Net implements WritableObject {
 
 //        myNet.writer().save();
         System.out.println("Done!");
+    }
+
+    public Layer getLayer(int index) {
+        return this.layers.get(index);
     }
 
     @Override

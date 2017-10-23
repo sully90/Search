@@ -6,12 +6,11 @@ import org.junit.Test;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
 import persistence.elastic.query.QueryHelper;
-import persistence.elastic.utils.ElasticIndices;
+import persistence.elastic.utils.ElasticIndex;
 import persistence.elastic.utils.ElasticUtils;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +21,7 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            ElasticIndices indexName = ElasticIndices.MOVIES;
+            ElasticIndex indexName = ElasticIndex.MOVIES;
 
             // Now wrap the Elastic client in our bulk processing client:
             ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, Movie.class);
@@ -46,7 +45,7 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            ElasticIndices indexName = ElasticIndices.MOVIES;
+            ElasticIndex indexName = ElasticIndex.MOVIES;
 
             // Now wrap the Elastic client in our bulk processing client:
             ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, indexName, Movie.class);
@@ -70,7 +69,7 @@ public class TestElasticSearch {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            ElasticIndices indexName = ElasticIndices.MOVIES;
+            ElasticIndex indexName = ElasticIndex.MOVIES;
 
             // Ensure index
             createIndex(client, indexName);
@@ -105,7 +104,7 @@ public class TestElasticSearch {
         }
     }
 
-    private void createIndex(Client client, ElasticIndices indexName) {
+    private void createIndex(Client client, ElasticIndex indexName) {
         if(!ElasticUtils.indexExists(client, indexName).isExists()) {
             ElasticUtils.createIndex(client, indexName);
         }

@@ -15,13 +15,13 @@ public class ElasticUtils {
 
     }
 
-    public static IndicesExistsResponse indexExists(Client client, ElasticIndices index) {
+    public static IndicesExistsResponse indexExists(Client client, ElasticIndex index) {
         return client.admin().indices()
                 .prepareExists(index.getIndexName())
                 .execute().actionGet();
     }
 
-    public static CreateIndexResponse createIndex(Client client, ElasticIndices index) {
+    public static CreateIndexResponse createIndex(Client client, ElasticIndex index) {
         final CreateIndexRequestBuilder createIndexRequestBuilder = client.admin()
                 .indices()
                 .prepareCreate(index.getIndexName());

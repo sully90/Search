@@ -2,11 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="821b9834-b83f-4808-bfe8-a22dc09478a9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/App.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/engine/SearchEngine.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ml/nlp/opennlp/StanfordNLPHelper.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/persistence/elastic/utils/ElasticIndices.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticIndices.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticIndex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/App.class" afterPath="$PROJECT_DIR$/target/classes/App.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/engine/SearchEngine.class" afterPath="$PROJECT_DIR$/target/classes/engine/SearchEngine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ml/neuralnet/Net.class" afterPath="$PROJECT_DIR$/target/classes/ml/neuralnet/Net.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Neuron.class" afterPath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Neuron.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Topology.class" afterPath="$PROJECT_DIR$/target/classes/ml/neuralnet/models/Topology.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ml/nlp/stanford/StanfordNLPHelper.class" afterPath="$PROJECT_DIR$/target/classes/ml/nlp/stanford/StanfordNLPHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/models/Movie.class" afterPath="$PROJECT_DIR$/target/classes/models/Movie.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/persistence/elastic/ElasticHelper.class" afterPath="$PROJECT_DIR$/target/classes/persistence/elastic/ElasticHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/persistence/elastic/client/ElasticSearchClient.class" afterPath="$PROJECT_DIR$/target/classes/persistence/elastic/client/ElasticSearchClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/persistence/elastic/utils/ElasticUtils.class" afterPath="$PROJECT_DIR$/target/classes/persistence/elastic/utils/ElasticUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/persistence/mongo/MongoHelper.class" afterPath="$PROJECT_DIR$/target/classes/persistence/mongo/MongoHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/utils/JsonUtils.class" afterPath="$PROJECT_DIR$/target/classes/utils/JsonUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ReadData.class" afterPath="$PROJECT_DIR$/target/test-classes/ReadData.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestElasticSearch.class" afterPath="$PROJECT_DIR$/target/test-classes/TestElasticSearch.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestMain.class" afterPath="$PROJECT_DIR$/target/test-classes/TestMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestNeuralNet.class" afterPath="$PROJECT_DIR$/target/test-classes/TestNeuralNet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestStanfordNLP.class" afterPath="$PROJECT_DIR$/target/test-classes/TestStanfordNLP.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/App.java" afterPath="$PROJECT_DIR$/src/main/java/App.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/engine/SearchEngine.java" afterPath="$PROJECT_DIR$/src/main/java/engine/SearchEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" afterPath="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Movie.java" afterPath="$PROJECT_DIR$/src/main/java/models/Movie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticUtils.java" afterPath="$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestElasticSearch.java" afterPath="$PROJECT_DIR$/src/test/java/TestElasticSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestMain.java" afterPath="$PROJECT_DIR$/src/test/java/TestMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" afterPath="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,101 +43,92 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="TestStanfordNLP.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/TestStanfordNLP.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="52" column="62" lean-forward="false" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1047#1054#0" expanded="true" />
-                    <element signature="e#3276#3277#0" expanded="true" />
-                    <element signature="e#3320#3321#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SearchEngine.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/engine/SearchEngine.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-259">
-                  <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ElasticSearchClient.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1290">
-                  <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="226" column="69" lean-forward="false" selection-start-line="226" selection-start-column="69" selection-end-line="226" selection-end-column="69" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#5741#5742#0" expanded="true" />
-                    <element signature="e#5803#5804#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="ElasticSearchClient.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/client/ElasticSearchClient.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="133" column="33" lean-forward="true" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="112">
-                  <caret line="101" column="18" lean-forward="false" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Net.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="60" column="29" lean-forward="false" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6669#6670#0" expanded="true" />
+                <element signature="e#6714#6715#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="65" column="64" lean-forward="false" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4931#4932#0" expanded="true" />
+                <element signature="e#4975#4976#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestElasticSearch.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/engine/SearchEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3439#3440#0" expanded="true" />
+                <element signature="e#3493#3494#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestNeuralNet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1080">
+              <caret line="93" column="63" lean-forward="false" selection-start-line="93" selection-start-column="63" selection-end-line="93" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2265">
+              <caret line="227" column="11" lean-forward="false" selection-start-line="227" selection-start-column="11" selection-end-line="227" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,6 +142,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>getInput</find>
+      <find>this.layers.get</find>
+      <find>myNet</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,10 +202,10 @@
         <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StandordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/nlp/opennlp/StanfordNLPHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/Duration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
         <option value="$PROJECT_DIR$/src/main/java/ml/nlp/stanford/StanfordNLPHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/Movie.java" />
         <option value="$PROJECT_DIR$/src/test/java/TestNeuralNet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/Movie.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/SearchEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/App.java" />
       </list>
@@ -202,7 +219,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="5" />
+    <option name="y" value="-1007" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
   </component>
@@ -222,7 +240,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,9 +269,14 @@
               <item name="Search" type="b2602c69:ProjectViewProjectNode" />
               <item name="Search" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Search" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Search" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Search" type="b2602c69:ProjectViewProjectNode" />
@@ -264,18 +286,20 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -486,6 +510,11 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -503,18 +532,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 37m 49s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 38m 26s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 40m 30s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestNeuralNet_test - 2017.10.18 at 23h 42m 21s.xml">
-      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestNeuralNet_test - 2017.10.19 at 00h 32m 28s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
@@ -527,41 +544,52 @@
     <history-entry file="TestNeuralNet_test - 2017.10.19 at 00h 34m 13s.xml">
       <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 23h 17m 59s.xml">
-      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 01h 02m 15s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestStanfordNLP_test - 2017.10.18 at 23h 18m 37s.xml">
-      <configuration name="TestStanfordNLP.test" configurationId="JUnit" />
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 01h 06m 24s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 01h 21m 32s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 14h 52m 13s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 14h 52m 44s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestNeuralNet_test - 2017.10.19 at 14h 53m 54s.xml">
+      <configuration name="TestNeuralNet.test" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
-    <editor active="true" />
+    <frame x="5" y="-1007" width="1440" height="873" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4556804" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28714108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30836454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15694444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39950064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4556804" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958803" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -599,9 +627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="51" column="21" lean-forward="false" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -620,16 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticIndices.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/elastic/utils/ElasticIndex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#157#158#0" expanded="false" />
-            <element signature="e#199#200#0" expanded="false" />
-            <element signature="e#235#236#0" expanded="false" />
-            <element signature="e#272#273#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-140">
           <caret line="3" column="23" lean-forward="true" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -669,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,6 +693,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -698,10 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
           <caret line="37" column="45" lean-forward="true" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#1745#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -709,7 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -729,15 +741,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
           <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="82" column="31" lean-forward="false" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -753,11 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="5" lean-forward="false" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#159#160#0" expanded="false" />
-            <element signature="e#208#209#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -765,9 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -775,25 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1890">
           <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#903#904#0" expanded="false" />
-            <element signature="e#940#941#0" expanded="false" />
-            <element signature="e#990#991#0" expanded="false" />
-            <element signature="e#1032#1033#0" expanded="false" />
-            <element signature="e#1068#1069#0" expanded="false" />
-            <element signature="e#1102#1103#0" expanded="false" />
-            <element signature="e#1133#1134#0" expanded="false" />
-            <element signature="e#1167#1168#0" expanded="false" />
-            <element signature="e#1223#1224#0" expanded="false" />
-            <element signature="e#1258#1259#0" expanded="false" />
-            <element signature="e#3629#3630#0" expanded="false" />
-            <element signature="e#3659#3660#0" expanded="false" />
-            <element signature="e#3694#3695#0" expanded="false" />
-            <element signature="e#3725#3726#0" expanded="false" />
-            <element signature="e#3775#3776#0" expanded="false" />
-            <element signature="e#3811#3812#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -822,9 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,9 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="278">
           <caret line="61" column="37" lean-forward="true" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -842,7 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -858,11 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#951#952#0" expanded="true" />
-            <element signature="e#1000#1001#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,21 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="124" column="26" lean-forward="false" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,19 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1898">
-          <caret line="142" column="23" lean-forward="true" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -924,48 +861,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="226" column="69" lean-forward="false" selection-start-line="226" selection-start-column="69" selection-end-line="226" selection-end-column="69" />
+        <state relative-caret-position="1080">
+          <caret line="93" column="63" lean-forward="false" selection-start-line="93" selection-start-column="63" selection-end-line="93" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5741#5742#0" expanded="true" />
-            <element signature="e#5803#5804#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="227" column="11" lean-forward="false" selection-start-line="227" selection-start-column="11" selection-end-line="227" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ml/neuralnet/Net.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="60" column="29" lean-forward="false" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6669#6670#0" expanded="true" />
+            <element signature="e#6714#6715#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/SearchEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="375">
+          <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/TestNeuralNet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="101" column="18" lean-forward="false" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3439#3440#0" expanded="true" />
+            <element signature="e#3493#3494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="52" column="62" lean-forward="false" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
+        <state relative-caret-position="675">
+          <caret line="65" column="64" lean-forward="false" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1047#1054#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
-            <element signature="e#3320#3321#0" expanded="true" />
+            <element signature="e#4931#4932#0" expanded="true" />
+            <element signature="e#4975#4976#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestElasticSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

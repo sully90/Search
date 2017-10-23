@@ -222,10 +222,13 @@ public class Movie implements WritableObject, Learnable {
     @Override
     public List<Double> getInputVals() {
         List<Double> inputVals = new LinkedList<>(Arrays.asList(
-                Double.valueOf(this.getPopularity()),
-                Double.valueOf(this.getAverageVote()),
-                Double.valueOf(this.getTimeSinceRelease(TimeUnit.DAYS))
+                Double.valueOf( Learnable.normalise(this.getPopularity(), 1000, 0) ),
+                Double.valueOf( Learnable.normalise(this.getAverageVote(), 10, 0) ),
+                Double.valueOf( Learnable.normalise(Math.tanh(this.getTimeSinceRelease(TimeUnit.DAYS)) / 365.0d, 0, 50) )
         ));
+//        List<Double> inputVals = new LinkedList<>(Arrays.asList(
+//                Double.valueOf(Learnable.normalise(this.getAverageVote(), 10, 0)))
+//        );
         return inputVals;
     }
 

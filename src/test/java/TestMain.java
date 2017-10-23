@@ -1,21 +1,15 @@
 
 import models.Movie;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.similarities.TFIDFSimilarity;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
-import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
-import org.elasticsearch.script.Script;
 import org.elasticsearch.search.SearchHits;
 import org.junit.Test;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
-import persistence.elastic.utils.ElasticIndices;
+import persistence.elastic.utils.ElasticIndex;
 import utils.Duration;
 
 import java.net.UnknownHostException;
@@ -30,7 +24,7 @@ public class TestMain {
         try {
             Client client = ElasticHelper.getClient(ElasticHelper.Host.LOCALHOST);
 
-            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, ElasticIndices.MOVIES, Movie.class);
+            ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, ElasticIndex.MOVIES, Movie.class);
 
 //            FunctionScoreQueryBuilder.FilterFunctionBuilder[] functions = {
 //                    new FunctionScoreQueryBuilder.FilterFunctionBuilder(

@@ -17,11 +17,10 @@ import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.ElasticSearchClient;
 import persistence.elastic.ml.ScoreScript;
 import persistence.elastic.ml.builders.ScoreScriptBuilder;
-import persistence.elastic.utils.ElasticIndices;
+import persistence.elastic.utils.ElasticIndex;
 
 import java.net.UnknownHostException;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class TestNeuralNet {
 
@@ -34,7 +33,7 @@ public class TestNeuralNet {
             e.printStackTrace();
         }
 
-        ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, ElasticIndices.MOVIES, Movie.class);
+        ElasticSearchClient<Movie> searchClient = new ElasticSearchClient<>(client, ElasticIndex.MOVIES, Movie.class);
 
 //        QueryBuilder match = QueryBuilders.matchQuery(
 //                "overview",
@@ -92,7 +91,7 @@ public class TestNeuralNet {
         Movie movie;
 
         // Init the neural net
-        Topology topology = new Topology(Arrays.asList(5, 10, 1));  // 5 input, 10 hidden, 1 output
+        Topology topology = new Topology(Arrays.asList(5, 10, 2, 1));  // 5 input, 10 hidden, 1 output
         Net myNet = new Net(topology);
 
         while (nIterations > 0) {
@@ -132,7 +131,7 @@ public class TestNeuralNet {
 
                 List<Double> inputVals = movie.getInputVals();
                 // Add elasticsearch internal score to inputVals
-                inputVals.add(Double.valueOf(score));
+//                inputVals.add(Double.valueOf(score));
                 // Use the query sentiment as an input value
                 inputVals.add(Double.valueOf(meanSentiment));
 
@@ -162,6 +161,39 @@ public class TestNeuralNet {
         }
 
         System.out.println("Error: " + myNet.getRecentAverageError());
+
+        // Check feed-forward works
+        for (int m = 0; m < movies.size(); m++) {
+            // m is the new rank
+            double newNormalisedRank = Learnable.normalise(m, 0, nhits-1);
+            // This is our targetVal
+            // Perform a training step
+
+            // Input vals
+            movie = movies.get(m);
+            float score = searchHits.getAt(m).getScore();
+
+            List<Double> inputVals = movie.getInputVals();
+            // Add elasticsearch internal score to inputVals
+//            inputVals.add(Double.valueOf(score));
+            // Use the query sentiment as an input value
+            inputVals.add(Double.valueOf(meanSentiment));
+
+            // Do the training step
+            myNet.feedForward(inputVals);
+            List<Double> results = myNet.getResults();
+
+            // Print the inputs
+            System.out.println("Inputs: " + inputVals);
+
+            // Print the results
+            System.out.println("Results: " + results);
+            System.out.println();
+
+            // Error
+            System.out.println("Error: " + myNet.getRecentAverageError());
+            System.out.println();
+        }
 
     }
 

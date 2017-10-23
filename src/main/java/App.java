@@ -1,5 +1,6 @@
 import engine.SearchEngine;
 import ml.neuralnet.Net;
+import ml.neuralnet.models.Layer;
 import ml.neuralnet.models.Learnable;
 import ml.neuralnet.models.Topology;
 import models.Movie;
@@ -8,11 +9,10 @@ import org.elasticsearch.common.lucene.search.function.FiltersFunctionScoreQuery
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.ScriptScoreFunctionBuilder;
-import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import persistence.elastic.ml.ScoreScript;
 import persistence.elastic.ml.builders.ScoreScriptBuilder;
-import persistence.elastic.utils.ElasticIndices;
+import persistence.elastic.utils.ElasticIndex;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,13 +26,19 @@ public class App {
 
     public static void main(String[] args) {
         try {
-            SearchEngine<Movie> searchEngine = new SearchEngine<Movie>(ElasticIndices.MOVIES, Movie.class);
-
             // Initialise an Artificial Neural Network and Topology
-            Topology topology = new Topology(Arrays.asList(5, 10, 1));  // 5 input, 10 hidden, 1 output
+            Topology topology = new Topology(Arrays.asList(5, 50, 2, 10, 1));  // 5 input, 50 hidden, 2 hidden (search weights), 10 hidden, 1 output
             Net myNet = new Net(topology);
 
+            SearchEngine<Movie> searchEngine = new SearchEngine<>(myNet, ElasticIndex.MOVIES, Movie.class);
+
+            System.out.println("Take 2nd hidden layer outputs and search weights for ES (in script)");
+
             String queryText;
+
+            Map<String, Double> fieldWeights = new HashMap<>();
+            fieldWeights.put("popularity", 0.5);
+            fieldWeights.put("averageVote", 0.5);
             while(true) {
                 queryText = readInput();
 
@@ -40,13 +46,31 @@ public class App {
                 double meanSentiment = searchEngine.meanSentimentOfQuery(queryText);
 
                 // Build the query object
-                QueryBuilder qb = buildQuery(queryText);
+
+                QueryBuilder qb = buildQuery(queryText, fieldWeights);
 
                 // Perform the search
                 SearchHits searchHits = searchEngine.search(qb, SearchType.DFS_QUERY_THEN_FETCH);
 
                 // Deserialize our Movie objects
                 List<Movie> movies = searchEngine.deserialize(searchHits);
+                List<Learnable> learnables = new LinkedList<>(movies);
+
+                // Retrain the model based on the features and some additional inputs
+                List<List<Double>> additionalInputVals = new LinkedList<>();
+
+                for (int i = 0; i < movies.size(); i++) {
+                    double normalisedRank = Learnable.normalise(i, 0, movies.size() - 1);
+                    List<Double> inputVals = new LinkedList<>();
+                    inputVals.add(Double.valueOf(normalisedRank));
+                    inputVals.add(Double.valueOf(meanSentiment));
+
+                    additionalInputVals.add(inputVals);
+                }
+
+                // Feed-forward to get the scores on which to order our results
+                List<Double> relevance = searchEngine.feedForwardAndSort(learnables, additionalInputVals);
+                System.out.println(relevance);
 
                 // Choose a movie at random and move it to the top of the list
                 int nhits = movies.size();
@@ -59,18 +83,28 @@ public class App {
                 movies.add(0, mostRelevantMovie);
 
                 // Retrain the model based on the features and some additional inputs
-                List<List<Double>> additionalInputVals = new LinkedList<>();
+                additionalInputVals = new LinkedList<>();
 
-                for (SearchHit hit : searchHits) {
+                for (int i = 0; i < movies.size(); i++) {
+                    double normalisedRank = Learnable.normalise(i, 0, movies.size() - 1);
                     List<Double> inputVals = new LinkedList<>();
-                    inputVals.add(Double.valueOf(hit.getScore()));
+                    inputVals.add(Double.valueOf(normalisedRank));
                     inputVals.add(Double.valueOf(meanSentiment));
 
                     additionalInputVals.add(inputVals);
                 }
 
-                List<Learnable> learnables = new LinkedList<>(movies);
-                searchEngine.updateNeuralNet(myNet, learnables, additionalInputVals, 1000);
+                searchEngine.updateNeuralNet(learnables, additionalInputVals, 1000);
+                List<Double> searchWeights = searchEngine.getLayerOutputs(2);
+                System.out.println(searchWeights);
+
+                Set<String> keySet = fieldWeights.keySet();
+                Iterator<String> keySetIt = keySet.iterator();
+
+                for (int i = 0; i < keySet.size(); i ++) {
+                    String key = keySetIt.next();
+                    fieldWeights.put(key, searchWeights.get(i));
+                }
 
             }
         } catch (UnknownHostException e) {
@@ -86,19 +120,16 @@ public class App {
         return random.nextInt(nhits);
     }
 
-    public static QueryBuilder buildQuery(String queryText) {
+    public static QueryBuilder buildQuery(String queryText, Map<String, Double> fieldWeights) {
         QueryBuilder match = QueryBuilders.multiMatchQuery(
                 queryText, "title", "overview", "tagLine"
         );
 
         ScoreScript<Movie> scoreScript = new ScoreScript<>(Movie.class);
-        scoreScript.builder()
-                .add("popularity", 0.5, ScoreScriptBuilder.ScriptOperator.MULTIPLY, ScoreScriptBuilder.ScriptOperator.MULTIPLY)
-//                .add("voteCount", 10000, ScoreScriptBuilder.ScriptOperator.MULTIPLY, ScoreScriptBuilder.ScriptOperator.DIVIDE)
-                .add("averageVote", 0.5, ScoreScriptBuilder.ScriptOperator.MULTIPLY, ScoreScriptBuilder.ScriptOperator.MULTIPLY);
-//                .add("revenue", 1000000, ScoreScriptBuilder.ScriptOperator.MULTIPLY, ScoreScriptBuilder.ScriptOperator.DIVIDE);
 
-//        QueryBuilder qb = QueryBuilders.functionScoreQuery(match, ScoreFunctionBuilders.scriptFunction("_score * doc['popularity'].value"));
+        for (String key : fieldWeights.keySet()) {
+            scoreScript.builder().add(key, fieldWeights.get(key), ScoreScriptBuilder.ScriptOperator.MULTIPLY, ScoreScriptBuilder.ScriptOperator.MULTIPLY);
+        }
 
         ScriptScoreFunctionBuilder scriptScoreFunctionBuilder = scoreScript.getScript();
         QueryBuilder qb = QueryBuilders.functionScoreQuery(match, scriptScoreFunctionBuilder)

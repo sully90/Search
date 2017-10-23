@@ -1,12 +1,12 @@
 package persistence.elastic.utils;
 
-public enum ElasticIndices {
+public enum ElasticIndex {
 
     MOVIES("movies");
 
     private String indexName;
 
-    ElasticIndices(String indexName) {
+    ElasticIndex(String indexName) {
         this.indexName = indexName;
     }
 

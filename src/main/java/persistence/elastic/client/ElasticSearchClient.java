@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 import persistence.elastic.ElasticHelper;
 import persistence.elastic.client.bulk.configuration.BulkProcessorConfiguration;
 import persistence.elastic.query.QueryHelper;
-import persistence.elastic.utils.ElasticIndices;
+import persistence.elastic.utils.ElasticIndex;
 import utils.JsonUtils;
 
 import java.io.IOException;
@@ -43,25 +43,25 @@ public class ElasticSearchClient<T> implements DefaultElasticSearchClient<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchClient.class);
 
     private final Client client;
-    private final ElasticIndices indexName;
+    private final ElasticIndex indexName;
     private final IndexType indexType;
     private final BulkProcessor bulkProcessor;
     private final Class<T> returnClass;
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass) {
+    public ElasticSearchClient(final Client client, final ElasticIndex indexName, final Class<T> returnClass) {
         // Default to document indexing
         this(client, indexName, returnClass, ElasticHelper.getDefaultBulkProcessorConfiguration(), IndexType.DOCUMENT);
     }
 
-    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass,
+    public ElasticSearchClient(final Client client, final ElasticIndex indexName, final Class<T> returnClass,
                                final BulkProcessorConfiguration bulkProcessorConfiguration) {
         // Default to document indexing
         this(client, indexName, returnClass, bulkProcessorConfiguration, IndexType.DOCUMENT);
     }
 
-    public ElasticSearchClient(final Client client, final ElasticIndices indexName, final Class<T> returnClass,
+    public ElasticSearchClient(final Client client, final ElasticIndex indexName, final Class<T> returnClass,
                                final BulkProcessorConfiguration bulkProcessorConfiguration, final IndexType indexType) {
         this.client = client;
         this.indexName = indexName;
