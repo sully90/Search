@@ -59,7 +59,7 @@ Caused by: org.elasticsearch.ElasticsearchSecurityException: missing authenticat
 	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:458) ~[netty-transport-4.1.13.Final.jar:4.1.13.Final]
 	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) ~[netty-common-4.1.13.Final.jar:4.1.13.Final]
 	at java.lang.Thread.run(Thread.java:844) ~[?:?]
-2017-10-16 00:34:43,830 ERROR [main] utils.ElasticSearchUtils (ElasticSearchUtils.java:36) - Error Checking Index Exist
+2017-10-16 00:34:43,830 ERROR [main] com.sully90.elasticsearch.utils.ElasticSearchUtils (ElasticSearchUtils.java:36) - Error Checking Index Exist
 org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: [{#transport#-1}{fedR6hQYTz-Kp-dImZ8e9Q}{localhost}{127.0.0.1:9300}]
 	at org.elasticsearch.client.transport.TransportClientNodesService.ensureNodesAreAvailable(TransportClientNodesService.java:347) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.client.transport.TransportClientNodesService.execute(TransportClientNodesService.java:245) ~[elasticsearch-5.6.2.jar:5.6.2]
@@ -69,7 +69,7 @@ org.elasticsearch.client.transport.NoNodeAvailableException: None of the configu
 	at org.elasticsearch.client.support.AbstractClient$IndicesAdmin.execute(AbstractClient.java:1256) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:80) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:54) ~[elasticsearch-5.6.2.jar:5.6.2]
-	at de.bytefish.elasticutils.elasticsearch5.utils.ElasticSearchUtils.indexExist(ElasticSearchUtils.java:33) [elasticutils-elasticsearch5-0.5.jar:0.5]
+	at de.bytefish.elasticutils.elasticsearch5.com.sully90.elasticsearch.utils.ElasticSearchUtils.indexExist(ElasticSearchUtils.java:33) [elasticutils-elasticsearch5-0.5.jar:0.5]
 	at TestElasticSearch.createIndex(TestElasticSearch.java:60) [test-classes/:?]
 	at TestElasticSearch.testElastic(TestElasticSearch.java:34) [test-classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
@@ -372,7 +372,7 @@ Caused by: org.elasticsearch.ElasticsearchSecurityException: unable to authentic
 	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:458) ~[netty-transport-4.1.13.Final.jar:4.1.13.Final]
 	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) ~[netty-common-4.1.13.Final.jar:4.1.13.Final]
 	at java.lang.Thread.run(Thread.java:844) ~[?:?]
-2017-10-16 00:46:28,627 ERROR [main] utils.ElasticSearchUtils (ElasticSearchUtils.java:36) - Error Checking Index Exist
+2017-10-16 00:46:28,627 ERROR [main] com.sully90.elasticsearch.utils.ElasticSearchUtils (ElasticSearchUtils.java:36) - Error Checking Index Exist
 org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: [{#transport#-1}{2zDEvKBAQvmWiGSG7h6-Sg}{localhost}{127.0.0.1:9300}, {#transport#-2}{7xekaHCVSuCufr5J70vK3g}{localhost}{127.0.0.1:9301}]
 	at org.elasticsearch.client.transport.TransportClientNodesService.ensureNodesAreAvailable(TransportClientNodesService.java:347) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.client.transport.TransportClientNodesService.execute(TransportClientNodesService.java:245) ~[elasticsearch-5.6.2.jar:5.6.2]
@@ -382,7 +382,7 @@ org.elasticsearch.client.transport.NoNodeAvailableException: None of the configu
 	at org.elasticsearch.client.support.AbstractClient$IndicesAdmin.execute(AbstractClient.java:1256) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:80) ~[elasticsearch-5.6.2.jar:5.6.2]
 	at org.elasticsearch.action.ActionRequestBuilder.execute(ActionRequestBuilder.java:54) ~[elasticsearch-5.6.2.jar:5.6.2]
-	at de.bytefish.elasticutils.elasticsearch5.utils.ElasticSearchUtils.indexExist(ElasticSearchUtils.java:33) [elasticutils-elasticsearch5-0.5.jar:0.5]
+	at de.bytefish.elasticutils.elasticsearch5.com.sully90.elasticsearch.utils.ElasticSearchUtils.indexExist(ElasticSearchUtils.java:33) [elasticutils-elasticsearch5-0.5.jar:0.5]
 	at TestElasticSearch.createIndex(TestElasticSearch.java:60) [test-classes/:?]
 	at TestElasticSearch.testElastic(TestElasticSearch.java:34) [test-classes/:?]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
