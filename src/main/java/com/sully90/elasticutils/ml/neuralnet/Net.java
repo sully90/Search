@@ -3,6 +3,7 @@ package com.sully90.elasticutils.ml.neuralnet;
 import com.sully90.elasticutils.ml.neuralnet.models.Layer;
 import com.sully90.elasticutils.ml.neuralnet.models.Neuron;
 import com.sully90.elasticutils.ml.neuralnet.models.Topology;
+import com.sully90.elasticutils.persistence.elastic.client.ElasticSearchClient;
 import org.bson.types.ObjectId;
 import com.sully90.elasticutils.persistence.mongo.WritableObject;
 import com.sully90.elasticutils.persistence.mongo.util.CollectionNames;
