@@ -219,6 +219,7 @@ public class Movie implements WritableObject, Learnable {
         return new ObjectFinder<Movie>(CollectionNames.MOVIES, Movie.class);
     }
 
+    @JsonIgnore
     @Override
     public List<Double> getInputVals() {
         List<Double> inputVals = new LinkedList<>(Arrays.asList(

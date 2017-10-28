@@ -82,9 +82,10 @@ public class TestElasticSearch {
             List<Movie> movies = new ArrayList<>();
             for (Movie movie : Movie.finder().find()) {
                 movies.add(movie);
+                break;
             }
 
-            searchClient.index(movies);
+            searchClient.indexWithPipeline(movies, ElasticSearchClient.Pipeline.OPENNLP);
 
 //            // Get all movies from mongo
 //            for (Movie movie : Movie.finder().find()) {
