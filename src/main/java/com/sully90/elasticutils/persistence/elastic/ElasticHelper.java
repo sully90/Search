@@ -19,37 +19,38 @@ public class ElasticHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticHelper.class);
 
-    private static final Map<Host, Client> clientConnectionMap;
+    private static final Map<String, Client> clientConnectionMap;
 
     static {
         clientConnectionMap = new ConcurrentHashMap<>();
+    }
 
-        for (Host host : Host.values()) {
+    public static Client getClient(String host) {
+        if (!clientConnectionMap.containsKey(host)) {
             try {
                 clientConnectionMap.put(host, connect(host));
             } catch (UnknownHostException e) {
-                LOGGER.error(e.getMessage());
+                LOGGER.error("Unable to make connection to ES server at host: " + host);
             }
         }
+        return clientConnectionMap.get(host);
     }
 
-    private static Client connect(Host host) throws UnknownHostException {
-        if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Attempting to make connection to ES db %s", host.getHostName()));
+    public static Client getClient(Host host) { return getClient(host.getHostName()); }
+
+    private static Client connect(String host) throws UnknownHostException {
+        if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Attempting to make connection to ES db %s", host));
 
         TransportClient client = new PreBuiltXPackTransportClient(Settings.builder()
                 .put("cluster.name", "elasticsearch")
                 .put("xpack.security.user", "elastic:changeme")
                 .build())
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host.getHostName()), 9300))
-                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host.getHostName()), 9301));
+                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host), 9300))
+                .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(host), 9301));
 
-        if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Successfully made connection to db to ES db %s", host.getHostName()));
+        if(LOGGER.isInfoEnabled()) LOGGER.info(String.format("Successfully made connection to ES db %s", host));
 
         return client;
-    }
-
-    public static Client getClient(Host host) {
-        return clientConnectionMap.get(host);
     }
 
     public static BulkProcessorConfiguration getDefaultBulkProcessorConfiguration() {
