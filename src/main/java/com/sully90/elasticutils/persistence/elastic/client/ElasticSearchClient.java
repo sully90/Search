@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sully90.elasticutils.persistence.elastic.ElasticHelper;
 import com.sully90.elasticutils.persistence.elastic.client.bulk.configuration.BulkProcessorConfiguration;
 import com.sully90.elasticutils.persistence.elastic.query.QueryHelper;
+import com.sully90.elasticutils.persistence.elastic.util.ElasticIndexNames;
 import com.sully90.elasticutils.utils.JsonUtils;
 import org.bson.types.ObjectId;
 import org.elasticsearch.action.bulk.BulkProcessor;
@@ -43,29 +44,29 @@ public class ElasticSearchClient<T> implements DefaultSearchClient<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchClient.class);
 
     private final Client client;
-    private final String indexName;
+    private final ElasticIndexNames indexName;
     private final IndexType indexType;
     private final BulkProcessor bulkProcessor;
     private final Class<T> returnClass;
 
     protected static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public ElasticSearchClient(final String indexName, final Class<T> returnClass) {
+    public ElasticSearchClient(final ElasticIndexNames indexName, final Class<T> returnClass) {
         this(ElasticHelper.getClient("localhost"), indexName, returnClass);
     }
 
-    public ElasticSearchClient(final Client client, final String indexName, final Class<T> returnClass) {
+    public ElasticSearchClient(final Client client, final ElasticIndexNames indexName, final Class<T> returnClass) {
         // Default to document indexing
         this(client, indexName, returnClass, ElasticHelper.getDefaultBulkProcessorConfiguration(), IndexType.DOCUMENT);
     }
 
-    public ElasticSearchClient(final Client client, final String indexName, final Class<T> returnClass,
+    public ElasticSearchClient(final Client client, final ElasticIndexNames indexName, final Class<T> returnClass,
                                final BulkProcessorConfiguration bulkProcessorConfiguration) {
         // Default to document indexing
         this(client, indexName, returnClass, bulkProcessorConfiguration, IndexType.DOCUMENT);
     }
 
-    public ElasticSearchClient(final Client client, final String indexName, final Class<T> returnClass,
+    public ElasticSearchClient(final Client client, final ElasticIndexNames indexName, final Class<T> returnClass,
                                final BulkProcessorConfiguration bulkProcessorConfiguration, final IndexType indexType) {
         this.client = client;
         this.indexName = indexName;
@@ -130,7 +131,7 @@ public class ElasticSearchClient<T> implements DefaultSearchClient<T> {
 
     protected IndexRequest createIndexRequest(byte[] messageBytes, XContentType xContentType) {
         return this.client.prepareIndex()
-                .setIndex(this.indexName)
+                .setIndex(this.indexName.getIndexName())
                 .setType(this.indexType.getIndexType())
                 .setSource(messageBytes, XContentType.JSON)
                 .request();
@@ -142,7 +143,7 @@ public class ElasticSearchClient<T> implements DefaultSearchClient<T> {
 
     protected IndexRequest createIndexRequest(byte[] messageBytes, String pipeline, XContentType xContentType) {
         return this.client.prepareIndex()
-                .setIndex(this.indexName)
+                .setIndex(this.indexName.getIndexName())
                 .setType(this.indexType.getIndexType())
                 .setSource(messageBytes, xContentType)
                 .setPipeline(pipeline)
@@ -229,8 +230,8 @@ public class ElasticSearchClient<T> implements DefaultSearchClient<T> {
 
     public String deleteById(String id) {
         DeleteResponse response = this.client
-                .prepareDelete(this.indexName, this.indexType.getIndexType(), id)
-                .setIndex(this.indexName)
+                .prepareDelete(this.indexName.getIndexName(), this.indexType.getIndexType(), id)
+                .setIndex(this.indexName.getIndexName())
                 .execute()
                 .actionGet();
         return response.getId();
@@ -249,7 +250,7 @@ public class ElasticSearchClient<T> implements DefaultSearchClient<T> {
         BulkByScrollResponse response =
                 DeleteByQueryAction.INSTANCE.newRequestBuilder(this.client)
                         .filter(qb)
-                        .source(this.indexName)
+                        .source(this.indexName.getIndexName())
                         .execute().actionGet();
 
         long deleted = response.getDeleted();

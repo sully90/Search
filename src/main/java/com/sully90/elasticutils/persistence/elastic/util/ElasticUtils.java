@@ -1,4 +1,4 @@
-package com.sully90.elasticutils.persistence.elastic.utils;
+package com.sully90.elasticutils.persistence.elastic.util;
 
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;

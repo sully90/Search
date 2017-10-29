@@ -3,26 +3,18 @@ package com.sully90.elasticutils.ml.neuralnet;
 import com.sully90.elasticutils.ml.neuralnet.models.Layer;
 import com.sully90.elasticutils.ml.neuralnet.models.Neuron;
 import com.sully90.elasticutils.ml.neuralnet.models.Topology;
-import com.sully90.elasticutils.persistence.elastic.client.ElasticSearchClient;
-import org.bson.types.ObjectId;
-import com.sully90.elasticutils.persistence.mongo.WritableObject;
-import com.sully90.elasticutils.persistence.mongo.util.CollectionNames;
-import com.sully90.elasticutils.persistence.mongo.util.ObjectFinder;
-import com.sully90.elasticutils.persistence.mongo.util.ObjectWriter;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class Net implements WritableObject {
+public class Net {
 
     private static double errorThresh = 0.2;
 
     private List<Layer> layers;
     private Topology topology;
-
-    private ObjectId _id;
 
     private int numLayers;
 
@@ -199,20 +191,6 @@ public class Net implements WritableObject {
 
     public Layer getLayer(int index) {
         return this.layers.get(index);
-    }
-
-    @Override
-    public ObjectWriter writer() {
-        return new ObjectWriter(CollectionNames.NET, this);
-    }
-
-    @Override
-    public ObjectId getObjectId() {
-        return this._id;
-    }
-
-    public static ObjectFinder<Net> finder() {
-        return new ObjectFinder<>(CollectionNames.NET, Net.class);
     }
 
     public static double getErrorThresh() {

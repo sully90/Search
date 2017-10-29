@@ -24,7 +24,7 @@ public class DatabaseConnection {
         return jongo.getCollection(collection);
     }
 
-    public MongoCollection getCollection(CollectionNames collection) {
+    public MongoCollection getCollection(MongoCollectionNames collection) {
         return jongo.getCollection(collection.getName());
     }
 }

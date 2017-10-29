@@ -16,11 +16,11 @@ public class ObjectWriter {
         this.object = object;
     }
 
-    public ObjectWriter(DatabaseType databaseType, CollectionNames collection, FindableObject object) {
+    public ObjectWriter(DatabaseType databaseType, MongoCollectionNames collection, FindableObject object) {
         this(MongoHelper.getDatabase(databaseType).getCollection(collection), object);
     }
 
-    public ObjectWriter(CollectionNames collection, FindableObject object) {
+    public ObjectWriter(MongoCollectionNames collection, FindableObject object) {
         this(MongoHelper.getDatabase(DatabaseType.LOCAL).getCollection(collection), object);
     }
 

@@ -17,12 +17,12 @@ public class ObjectFinder<T> {
         this.returnClass = returnClass;
     }
 
-    public ObjectFinder(DatabaseType databaseType, CollectionNames collection, Class<T> returnClass) {
+    public ObjectFinder(DatabaseType databaseType, MongoCollectionNames collection, Class<T> returnClass) {
         this.collection = MongoHelper.getDatabase(databaseType).getCollection(collection);
         this.returnClass = returnClass;
     }
 
-    public ObjectFinder(CollectionNames collection, Class<T> returnClass) {
+    public ObjectFinder(MongoCollectionNames collection, Class<T> returnClass) {
         this.collection = MongoHelper.getDatabase(DatabaseType.LOCAL).getCollection(collection);
         this.returnClass = returnClass;
     }
